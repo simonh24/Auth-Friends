@@ -1,6 +1,19 @@
 import React, { useState } from "react";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import { useHistory } from "react-router-dom";
+import styled from "styled-components";
+
+import { Card, TextField, Button } from "@material-ui/core";
+
+const StyledCard = styled(Card)`
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 25px 35%;
+    padding: 25px 0;
+`;
 
 const LoginForm = () => {
     const initialUserValues = {
@@ -31,13 +44,13 @@ const LoginForm = () => {
 
     return (
         <form onSubmit={onSubmit}>
-            <label>Username:
-                <input type="text" value={userValues.username} name="username" onChange={handleChanges}></input>
-            </label>
-            <label>Password:
-                <input type="password" value={userValues.password} name="password" onChange={handleChanges}></input>
-            </label>
-            <button>Sign In</button>
+            <StyledCard>
+                <TextField variant="outlined" type="text" value={userValues.username} name="username" onChange={handleChanges} label="Username"></TextField>
+                <br></br>
+                <TextField variant="outlined" type="password" value={userValues.password} name="password" onChange={handleChanges} label="Password"></TextField>
+                <br></br>
+                <Button variant="contained" color="primary" onClick={onSubmit}>Sign In</Button>
+            </StyledCard>
         </form>
     )
 }
