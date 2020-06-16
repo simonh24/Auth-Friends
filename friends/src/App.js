@@ -1,24 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { Route } from "react-router-dom";
+
+import LoginForm from "./components/LoginForm";
+import FriendsList from "./components/FriendsList";
+import FriendsForm from "./components/FriendsForm";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Route exact path="/">
+        <LoginForm />
+      </Route>
+      <PrivateRoute exact path="/friends" component={FriendsForm}/>
+      <PrivateRoute exact path="/friends" component={FriendsList}/>
     </div>
   );
 }
